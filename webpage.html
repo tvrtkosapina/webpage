@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Personal portfolio of Tvrtko Šapina, Mathematics student at the University of Zagreb interested in quantitative finance, mathematical modelling and machine learning."
+  />
+
+  <meta
+    name="keywords"
+    content="Tvrtko Šapina, Mathematics, University of Zagreb, Quantitative Finance, Machine Learning, Python, Mathematical Modelling"
+  />
+
+  <meta name="author" content="Tvrtko Šapina" />
+
+  <title>Tvrtko Šapina | Mathematics & Quantitative Finance</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
+
+  <!-- Slick -->
+  <link rel="stylesheet" href="slick/slick.css">
+  <link rel="stylesheet" href="slick/slick-theme.css">
+
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
+
+  <!-- Additional styling -->
+  <style>
+
+    /* ================================
+       GENERAL
+    ================================= */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    a {
+      transition: all 0.25s ease;
+    }
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .tm-hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .tm-hero-subtitle {
+      font-size: 1.35rem;
+      margin-top: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .tm-hero-description {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    /* ================================
+       BUTTONS
+    ================================= */
+
+    .custom-buttons {
+      margin-top: 30px;
+    }
+
+    .custom-btn {
+      display: inline-block;
+      padding: 11px 24px;
+      margin: 5px;
+      border: 2px solid #fff;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .custom-btn:hover {
+      background: #fff;
+      color: #333;
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .custom-btn-dark {
+      border-color: #369;
+      color: #369;
+    }
+
+    .custom-btn-dark:hover {
+      background: #369;
+      color: #fff;
+    }
+
+    /* ================================
+       SECTION INTRO
+    ================================= */
+
+    .section-lead {
+      max-width: 760px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* ================================
+       EXPERIENCE
+    ================================= */
+
+    .experience-item {
+      margin-bottom: 30px;
+    }
+
+    .experience-item h4 {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .experience-date {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .experience-item p {
+      line-height: 1.75;
+    }
+
+    /* ================================
+       PROJECTS
+    ================================= */
+
+    .project-card {
+      padding: 15px;
+    }
+
+    .project-image-link {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .project-image-link img {
+      width: 100%;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .project-image-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .project-image-link:hover img {
+      transform: scale(1.04);
+    }
+
+    .project-description {
+      margin-top: 18px;
+      line-height: 1.7;
+    }
+
+    .project-title {
+      margin-top: 18px;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .project-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-title a:hover {
+      color: #4da6ff;
+    }
+
+    .project-buttons {
+      margin-top: 15px;
+    }
+
+    .project-btn {
+      display: inline-block;
+      padding: 7px 15px;
+      margin-right: 6px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 4px;
+      color: #fff;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .project-btn:hover {
+      background: #fff;
+      color: #333;
+      text-decoration: none;
+    }
+
+    /* ================================
+       PHOTOGRAPHY
+    ================================= */
+
+    .tm-gallery-item {
+      transition: transform 0.3s ease;
+    }
+
+    .tm-gallery-item:hover {
+      transform: translateY(-4px);
+    }
+
+    /* ================================
+       CONTACT
+    ================================= */
+
+    .contact-intro {
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    .contact-item {
+      margin-bottom: 20px;
+    }
+
+    .contact-item .item-link {
+      transition: all 0.25s ease;
+    }
+
+    .contact-item .item-link:hover {
+      transform: translateX(5px);
+      text-decoration: none;
+    }
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 768px) {
+
+      .tm-hero-title {
+        font-size: 2.8rem;
+      }
+
+      .tm-hero-subtitle {
+        font-size: 1.15rem;
+      }
+
+      .tm-hero-description {
+        font-size: 0.95rem;
+        padding: 0 15px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section id="infinite" class="text-white tm-font-big tm-parallax">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+
+    <div class="container">
+
+      <div class="tm-next">
+        <a href="#infinite" class="navbar-brand">
+          Tvrtko Šapina
+        </a>
+      </div>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars navbar-toggler-icon"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a class="nav-link tm-nav-link" href="#infinite">
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link tm-nav-link" href="#about">
+              About
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link tm-nav-link" href="#experience">
+              Experience
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link tm-nav-link" href="#projects">
+              Projects
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link tm-nav-link" href="#photography">
+              Photography
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link tm-nav-link" href="#contact">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- Hero content -->
+
+  <div class="text-center tm-hero-text-container">
+
+    <div class="tm-hero-text-container-inner">
+
+      <h1 class="tm-hero-title">
+        Tvrtko Šapina
+      </h1>
+
+      <p class="tm-hero-subtitle">
+        Mathematics Student 
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about" class="tm-section-pad-top">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="tm-intro-text-container text-center">
+
+          <h2 class="tm-text-primary mb-4 tm-section-title">
+            About me
+          </h2>
+
+          <p class="section-lead">
+
+            I am a third-year Mathematics student at the
+            <a
+              href="https://www.pmf.unizg.hr/math"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              University of Zagreb, Faculty of Science
+            </a>.
+
+            My main interests are quantitative finance, mathematical modelling, and machine learning. I have experience in using mainly Python and C for data science and financial analysis.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPERIENCE
+========================================================= -->
+
+<section id="experience" class="tm-section-pad-top">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="tm-intro-text-container">
+
+          <h2 class="tm-text-primary mb-4 tm-section-title text-center">
+            Experience
+          </h2>
+
+
+          <!-- InterCapital -->
+
+          <div class="experience-item">
+
+            <h4>
+              <i class="fas fa-chart-line mr-2"></i>
+
+              <a
+                href="https://inter.capital/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                InterCapital Academy
+              </a>
+            </h4>
+
+            <div class="experience-date">
+              Sep 2026
+            </div>
+
+            <p>
+              The program covered macroeconomic analysis, valuation of
+              bonds, equities and real estate, portfolio management
+              and trading.
+            </p>
+
+          </div>
+
+
+          <!-- Hrvatski Telekom -->
+
+          <div class="experience-item">
+
+            <h4>
+              <i class="fas fa-database mr-2"></i>
+
+              <a
+                href="https://www.t.ht.hr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hrvatski Telekom
+              </a>
+
+              — Student Data Scientist
+            </h4>
+
+            <div class="experience-date">
+              Jul 2026 – Sep 2026
+            </div>
+
+            <p>
+              Performed feature engineering for a customer credit
+              risk assessment model and extracted relevant data
+              from SQL databases.
+            </p>
+
+          </div>
+
+
+          <!-- E.ON -->
+
+          <div class="experience-item">
+
+            <h4>
+              <i class="fas fa-bolt mr-2"></i>
+
+              <a
+                href="https://www.eon.hr/hr.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                E.ON
+              </a>
+
+              — Controlling & Risk Management Intern
+            </h4>
+
+            <div class="experience-date">
+              Mar 2025 – Jul 2025
+            </div>
+
+            <p>
+              Developed a Python tool for automating the extraction
+              of market data from the HUDEX energy exchange.
+
+              Built a pricing tool using polynomial interpolation
+              to estimate monthly natural-gas prices from quarterly
+              and annual forward prices.
+            </p>
+
+          </div>
+
+
+          <!-- CV -->
+
+          <div class="text-center mt-4">
+
+            <a
+              href="CV_Tvrtko_Šapina.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="tm-btn-primary"
+            >
+              <i class="fas fa-file-pdf mr-2"></i>
+              View CV
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section
+  id="projects"
+  class="tm-section-pad-top tm-parallax-2"
+>
+
+  <div class="container tm-testimonials-content">
+
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <h2 class="tm-text-primary mb-4 tm-section-title text-center">
+          Projects
+        </h2>
+
+        <p class="mx-auto tm-section-desc text-center">
+
+          Here are some of my projects. Feel free to check them out.
+
+        </p>
+
+
+        <div class="mx-auto tm-gallery-container tm-gallery-container-2">
+
+          <div class="tm-testimonials-carousel">
+
+
+            <!-- =================================================
+                 PROJECT 1
+            ================================================== -->
+
+            <figure class="tm-testimonial-item project-card">
+
+              <a
+                href="https://optionpricingtoolkit-dewbzm3qzn6d2rh3caof8n.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-image-link"
+              >
+
+                <img
+                  src="img/testimonial-img-02.jpg"
+                  alt="Option Pricing Toolkit project"
+                  class="img-fluid mx-auto"
+                >
+
+              </a>
+
+
+              <h3 class="project-title">
+
+                <a
+                  href="https://optionpricingtoolkit-dewbzm3qzn6d2rh3caof8n.streamlit.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Option Pricing Toolkit
+                </a>
+
+              </h3>
+
+
+              <blockquote class="project-description">
+
+                Developed a Python toolkit for pricing European,
+                American and Bermudan call and put options using
+                CRR binomial trees, Black-Scholes and Monte Carlo
+                simulation.
+
+                Implemented Euler-Maruyama, tamed Euler and Milstein
+                numerical schemes for solving stochastic differential
+                equations.
+
+              </blockquote>
+
+
+              <div class="project-buttons">
+
+                <a
+                  href="https://optionpricingtoolkit-dewbzm3qzn6d2rh3caof8n.streamlit.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-btn"
+                >
+                  <i class="fas fa-external-link-alt mr-1"></i>
+                  Live Demo
+                </a>
+
+              </div>
+
+            </figure>
+
+
+            <!-- =================================================
+                 PROJECT 2
+            ================================================== -->
+
+            <figure class="tm-testimonial-item project-card">
+
+              <a
+                href="https://github.com/tvrtkosapina/portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-image-link"
+              >
+
+                <img
+                  src="img/testimonial-img-01.jpg"
+                  alt="Banknote Authentication machine learning project"
+                  class="img-fluid mx-auto"
+                >
+
+              </a>
+
+
+              <h3 class="project-title">
+
+                <a
+                  href="https://github.com/tvrtkosapina/portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Banknote Authentication
+                </a>
+
+              </h3>
+
+
+              <blockquote class="project-description">
+
+                Performed data preprocessing and explored
+                clustering-based approaches.
+
+                Trained and compared supervised learning models
+                including logistic regression, SVM, decision tree
+                and gradient boosting.
+
+              </blockquote>
+
+
+              <div class="project-buttons">
+
+                <a
+                  href="https://github.com/tvrtkosapina/portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-btn"
+                >
+                  <i class="fab fa-github mr-1"></i>
+                  GitHub
+                </a>
+
+              </div>
+
+            </figure>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="tm-bg-overlay"></div>
+
+</section>
+
+
+<!-- =========================================================
+     PHOTOGRAPHY
+========================================================= -->
+
+<section id="photography" class="tm-section-pad-top">
+
+  <div class="container tm-container-gallery">
+
+    <div class="row">
+
+      <div class="text-center col-12">
+
+        <h2 class="tm-text-primary tm-section-title mb-4">
+          Photography
+        </h2>
+
+        <p class="mx-auto tm-section-desc">
+
+          In my free time, I am an amateur photographer.
+          Here is a selection of my work.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-12">
+
+        <div class="mx-auto tm-gallery-container">
+
+          <div class="grid tm-gallery">
+
+
+            <!-- Photo 1 -->
+
+            <a href="img/gallery-img-01.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-01.jpg"
+                  alt="Mountain landscape at Lago di Braie"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      Lago di Braie
+                      <span>2025</span>
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 2 -->
+
+            <a href="img/gallery-img-02.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-02.jpg"
+                  alt="Fruit photography"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      Fruit Fantasy
+                      <span>Zagreb 2024</span>
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 3 -->
+
+            <a href="img/gallery-img-05.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-05.jpg"
+                  alt="City view of Zagreb"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      <span>City View</span>
+                      Zagreb 2023
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 4 -->
+
+            <a href="img/gallery-img-03.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-03.jpg"
+                  alt="Spring landscape in Vitez"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      <span>Spring</span>
+                      Vitez 2023
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 5 -->
+
+            <a href="img/gallery-img-04.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-04.jpg"
+                  alt="Mountain landscape in Les Orres"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      <span>Among the Clouds</span>
+                      Les Orres 2022
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 6 -->
+
+            <a href="img/gallery-img-06.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-06.jpg"
+                  alt="Countryside landscape in Vitez"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      Countryside
+                      <span>Vitez</span>
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 7 -->
+
+            <a href="img/gallery-img-07.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-07.jpg"
+                  alt="Cold coffee at Nu Bar"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      Cold Coffee
+                      <span>Nu Bar</span>
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+            <!-- Photo 8 -->
+
+            <a href="img/gallery-img-08.jpg">
+
+              <figure class="effect-honey tm-gallery-item">
+
+                <img
+                  src="img/gallery-tn-08.jpg"
+                  alt="Fog in the mountains of Vlašić"
+                  class="img-fluid"
+                >
+
+                <figcaption>
+
+                  <h2>
+                    <i>
+                      Fog in the Mountains
+                      <span>Vlašić</span>
+                    </i>
+                  </h2>
+
+                </figcaption>
+
+              </figure>
+
+            </a>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section
+  id="contact"
+  class="tm-section-pad-top tm-parallax-2"
+>
+
+  <div class="container tm-container-contact">
+
+    <div class="row">
+
+      <div class="text-center col-12">
+
+        <h2 class="tm-section-title mb-4">
+          Get in touch
+        </h2>
+
+        <p class="mb-5 contact-intro">
+
+          The easiest way to reach me is by email or via LinkedIn. I am happy to discuss projects, research, internships or potential collaborations.
+
+        </p>
+
+      </div>
+
+
+      <div class="col-sm-12 col-md-6">
+
+        <div class="contact-item">
+
+          <a
+            href="https://www.linkedin.com/in/tvrtko-%C5%A1apina-499057361/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="item-link"
+          >
+
+            <i class="fab fa-linkedin fa-2x mr-4"></i>
+
+            <span>
+              LinkedIn
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <a
+            href="https://github.com/tvrtkosapina"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="item-link"
+          >
+
+            <i class="fab fa-github fa-2x mr-4"></i>
+
+            <span>
+              GitHub
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- Contact CTA -->
+
+      <div class="col-sm-12 col-md-6 text-center">
+
+        <div style="padding-top: 10px;">
+
+          <i
+            class="fas fa-paper-plane"
+            style="font-size: 3rem; margin-bottom: 20px;"
+          ></i>
+
+          <h4 class="mb-3">
+            Let's connect
+          </h4>
+
+
+          <a
+            href="mailto:tsapina.math@pmf.hr"
+            class="tm-btn-primary"
+          >
+
+            <i class="far fa-envelope mr-2"></i>
+            Send me an email
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+
+  <footer class="text-center small tm-footer">
+
+    <p class="mb-0">
+
+      Copyright &copy; 2026 Tvrtko Šapina
+
+      <span style="margin: 0 8px;">|</span>
+
+      Designed & developed by Tvrtko Šapina
+
+    </p>
+
+  </footer>
+
+</section>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="js/jquery-1.9.1.min.js"></script>
+
+<script src="slick/slick.min.js"></script>
+
+<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<script src="js/easing.min.js"></script>
+
+<script src="js/jquery.singlePageNav.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+
+<script>
+
+  /* ============================================
+     PARALLAX
+  ============================================ */
+
+  function getOffSet() {
+
+    var _offset = 450;
+
+    var windowHeight = window.innerHeight;
+
+    if (windowHeight > 500) {
+      _offset = 400;
+    }
+
+    if (windowHeight > 680) {
+      _offset = 300;
+    }
+
+    if (windowHeight > 830) {
+      _offset = 210;
+    }
+
+    return _offset;
+  }
+
+
+  function setParallaxPosition($doc, multiplier, $object) {
+
+    var offset = getOffSet();
+
+    var from_top = $doc.scrollTop();
+
+    var bg_css =
+      'center ' +
+      (multiplier * from_top - offset) +
+      'px';
+
+    $object.css({
+      "background-position": bg_css
+    });
+
+  }
+
+
+  var background_image_parallax = function(
+    $object,
+    multiplier,
+    forceSet
+  ) {
+
+    multiplier =
+      typeof multiplier !== 'undefined'
+        ? multiplier
+        : 0.5;
+
+    multiplier = 1 - multiplier;
+
+    var $doc = $(document);
+
+    if (forceSet) {
+
+      setParallaxPosition(
+        $doc,
+        multiplier,
+        $object
+      );
+
+    } else {
+
+      $(window).scroll(function() {
+
+        setParallaxPosition(
+          $doc,
+          multiplier,
+          $object
+        );
+
+      });
+
+    }
+
+  };
+
+
+  var background_image_parallax_2 =
+    function($object, multiplier) {
+
+      multiplier =
+        typeof multiplier !== 'undefined'
+          ? multiplier
+          : 0.5;
+
+      multiplier = 1 - multiplier;
+
+      var $doc = $(document);
+
+      $object.css({
+        "background-attachment": "fixed"
+      });
+
+      $(window).scroll(function() {
+
+        if ($(window).width() > 768) {
+
+          var firstTop = $object.offset().top;
+
+          var pos = $(window).scrollTop();
+
+          var yPos =
+            Math.round(
+              (multiplier * (firstTop - pos)) - 186
+            );
+
+          var bg_css =
+            'center ' +
+            yPos +
+            'px';
+
+          $object.css({
+            "background-position": bg_css
+          });
+
+        } else {
+
+          $object.css({
+            "background-position": "center"
+          });
+
+        }
+
+      });
+
+    };
+
+
+  /* ============================================
+     DOCUMENT READY
+  ============================================ */
+
+  $(function() {
+
+
+    /* Hero parallax */
+
+    background_image_parallax(
+      $(".tm-parallax"),
+      0.30,
+      false
+    );
+
+
+    /* Section parallax */
+
+    background_image_parallax_2(
+      $("#contact"),
+      0.80
+    );
+
+    background_image_parallax_2(
+      $("#projects"),
+      0.80
+    );
+
+
+    /* Resize */
+
+    window.addEventListener(
+      'resize',
+      function() {
+
+        background_image_parallax(
+          $(".tm-parallax"),
+          0.30,
+          true
+        );
+
+      },
+      true
+    );
+
+
+    /* Navbar */
+
+    $(window).scroll(function() {
+
+      if ($(document).scrollTop() > 120) {
+
+        $('.tm-navbar').addClass("scroll");
+
+      } else {
+
+        $('.tm-navbar').removeClass("scroll");
+
+      }
+
+    });
+
+
+    /* Mobile menu */
+
+    $('#tmNav a').on(
+      'click',
+      function() {
+
+        $('.navbar-collapse').removeClass('show');
+
+      }
+    );
+
+
+    /* Smooth navigation */
+
+    $('#tmNav').singlePageNav({
+      'easing': 'easeInOutExpo',
+      'speed': 1
+    });
+
+
+    /* Smooth scrolling */
+
+    $("a").on(
+      'click',
+      function(event) {
+
+        if (this.hash !== "") {
+
+          event.preventDefault();
+
+          var hash = this.hash;
+
+          $('html, body').animate(
+            {
+              scrollTop:
+                $(hash).offset().top
+            },
+            600,
+            'easeInOutExpo',
+            function() {
+
+              window.location.hash = hash;
+
+            }
+          );
+
+        }
+
+      }
+    );
+
+
+    /* ============================================
+       PHOTO LIGHTBOX
+    ============================================ */
+
+    $('.tm-gallery').magnificPopup({
+
+      delegate: 'a',
+
+      type: 'image',
+
+      gallery: {
+        enabled: true
+      },
+
+      image: {
+        titleSrc: function(item) {
+
+          return item.el
+            .find('h2')
+            .text();
+
+        }
+      }
+
+    });
+
+
+    /* ============================================
+       PROJECT CAROUSEL
+    ============================================ */
+
+    $('.tm-testimonials-carousel').slick({
+
+      dots: true,
+
+      prevArrow: false,
+
+      nextArrow: false,
+
+      infinite: false,
+
+      slidesToShow: 2,
+
+      slidesToScroll: 1,
+
+      responsive: [
+
+        {
+          breakpoint: 992,
+
+          settings: {
+            slidesToShow: 2
+          }
+        },
+
+        {
+          breakpoint: 768,
+
+          settings: {
+            slidesToShow: 1
+          }
+        },
+
+        {
+          breakpoint: 480,
+
+          settings: {
+            slidesToShow: 1
+          }
+        }
+
+      ]
+
+    });
+
+
+    /* ============================================
+       PHOTOGRAPHY CAROUSEL
+    ============================================ */
+
+    $('.tm-gallery').slick({
+
+      dots: true,
+
+      infinite: false,
+
+      slidesToShow: 5,
+
+      slidesToScroll: 2,
+
+      responsive: [
+
+        {
+          breakpoint: 1199,
+
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 2
+          }
+        },
+
+        {
+          breakpoint: 991,
+
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 2
+          }
+        },
+
+        {
+          breakpoint: 767,
+
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+
+        {
+          breakpoint: 480,
+
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+
+      ]
+
+    });
+
+
+  });
+
+</script>
+
+</body>
+</html>
