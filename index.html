@@ -2,27 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta
     name="description"
     content="Personal portfolio of Tvrtko Šapina, Mathematics student at the University of Zagreb interested in quantitative finance, mathematical modelling and machine learning."
   />
-
   <meta
     name="keywords"
     content="Tvrtko Šapina, Mathematics, University of Zagreb, Quantitative Finance, Machine Learning, Python, Mathematical Modelling"
   />
-
   <meta name="author" content="Tvrtko Šapina" />
+  <meta name="theme-color" content="#f3eee8" />
 
-  <title>Tvrtko Šapina | Mathematics & Quantitative Finance</title>
+  <title>Tvrtko Šapina</title>
+
+  <!-- Personal monogram favicon -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d2b36'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-size='34' font-weight='600' fill='%23f3eee8'%3ET%C5%A0%3C/text%3E%3C/svg%3E"
+  />
+
+  <!-- Fonts: STIX Two (the typeface of scientific publishing) + Source Sans 3 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap"
+  />
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
 
-  <!-- Slick -->
+  <!-- Slick (used by the photography gallery) -->
   <link rel="stylesheet" href="slick/slick.css">
   <link rel="stylesheet" href="slick/slick-theme.css">
 
@@ -32,229 +44,699 @@
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <!-- Main CSS -->
+  <!-- Base layout CSS -->
   <link rel="stylesheet" href="css/tooplate-infinite-loop.css" />
 
-  <!-- Additional styling -->
+  <!-- Personal theme: everything below overrides the base CSS -->
   <style>
 
     /* ================================
-       GENERAL
+       PALETTE & TYPE
+       Ink and slate come from the shaded pines in the Lago di Braie photo,
+       mist from its fog, brass from the Zagreb sunset.
     ================================= */
+
+    :root {
+      --ink: #1d2b36;
+      --ink-deep: #14202a;
+      --slate: #3f5a6c;
+      --text: #3e4a54;
+      --muted: #6a7680;
+      --mist: #f3eee8;
+      --line: #dcd6cf;
+      --brass: #a8701f;
+      --brass-dark: #8a5a16;
+      --brass-light: #e3a857;
+      --serif: "STIX Two Text", Georgia, "Times New Roman", serif;
+      --sans: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+    }
 
     html {
       scroll-behavior: smooth;
     }
 
     body {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      color: var(--text);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4,
+    .tm-section-title {
+      font-family: var(--serif);
+      color: var(--ink);
+    }
+
+    p {
+      line-height: 1.75;
     }
 
     a {
-      transition: all 0.25s ease;
+      color: var(--slate);
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--brass-dark);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--brass);
+      outline-offset: 3px;
+    }
+
+    .tm-text-primary {
+      color: var(--ink);
+    }
+
+    .tm-section-title {
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .tm-section-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .tm-btn-primary {
+      display: inline-block;
+      background-color: var(--ink);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .tm-btn-primary:hover,
+    .tm-btn-primary:focus {
+      background-color: var(--slate);
+      color: #fff;
+    }
+
+    /* ================================
+       NAVBAR
+    ================================= */
+
+    .tm-navbar {
+      background: linear-gradient(rgba(243, 238, 232, 0.92), rgba(243, 238, 232, 0));
+      padding-top: 14px;
+      padding-bottom: 14px;
+    }
+
+    .tm-navbar.scroll {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .tm-navbar .navbar-brand,
+    .tm-navbar.scroll .navbar-brand {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.45rem;
+      color: var(--ink);
+    }
+
+    .tm-navbar .navbar-brand:hover,
+    .tm-navbar.scroll .navbar-brand:hover {
+      color: var(--slate);
+    }
+
+    .tm-navbar .tm-nav-link,
+    .tm-navbar.scroll .tm-nav-link {
+      color: var(--ink);
+      background: transparent;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: inset 0 -2px 0 transparent;
+      transition: box-shadow 0.2s ease, color 0.2s ease;
+    }
+
+    .tm-navbar .tm-nav-link:hover,
+    .tm-navbar .tm-nav-link.current,
+    .tm-navbar.scroll .tm-nav-link:hover,
+    .tm-navbar.scroll .tm-nav-link.current {
+      color: var(--ink);
+      background: transparent;
+      box-shadow: inset 0 -2px 0 var(--brass);
+    }
+
+    @media (min-width: 768px) {
+      .navbar-expand-md .navbar-nav .nav-link {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+
+    .tm-navbar .navbar-toggler,
+    .tm-navbar.scroll .navbar-toggler {
+      border: 1px solid var(--ink);
+    }
+
+    .tm-navbar .navbar-toggler-icon,
+    .tm-navbar.scroll .navbar-toggler-icon {
+      color: var(--ink);
+    }
+
+    @media (max-width: 767px) {
+      .navbar-collapse {
+        margin-top: 10px;
+        border-radius: 6px;
+        box-shadow: 0 10px 30px rgba(20, 32, 42, 0.15);
+      }
+
+      .navbar-collapse .nav-link.tm-nav-link {
+        color: var(--ink);
+      }
     }
 
     /* ================================
        HERO
+       The photo now fills the screen (it used to sit at the top with a
+       dark grey band underneath). A light mist keeps the name readable.
     ================================= */
 
+    #infinite {
+      background-color: var(--mist);
+      background-size: cover;
+      background-position: center 42%;
+      box-shadow: inset 0 0 0 100vmax rgba(243, 238, 232, 0.14);
+      overflow: hidden;
+    }
+
+    @media (min-width: 992px) and (hover: hover) {
+      #infinite {
+        background-attachment: fixed;
+      }
+    }
+
+    .tm-hero-text-container-inner {
+      position: relative;
+      isolation: isolate;
+      margin-top: -40px;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .tm-hero-text-container-inner::before {
+      content: "";
+      position: absolute;
+      inset: -28% -18%;
+      z-index: -1;
+      background: radial-gradient(
+        closest-side,
+        rgba(243, 238, 232, 0.94) 0%,
+        rgba(243, 238, 232, 0.8) 55%,
+        rgba(243, 238, 232, 0) 100%
+      );
+      pointer-events: none;
+    }
+
     .tm-hero-title {
-      font-size: 4rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-family: var(--serif);
+      font-size: clamp(2.7rem, 6.2vw, 4.75rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      text-shadow: none;
+      margin-bottom: 0;
+    }
+
+    .hero-rule {
+      display: block;
+      width: 56px;
+      height: 2px;
+      margin: 22px auto 20px;
+      background: var(--brass);
     }
 
     .tm-hero-subtitle {
-      font-size: 1.35rem;
-      margin-top: 15px;
-      letter-spacing: 0.5px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-shadow: none;
+      margin: 0;
     }
 
-    .tm-hero-description {
-      max-width: 700px;
-      margin: 20px auto 0;
-      font-size: 1.05rem;
-      line-height: 1.8;
+    .hero-focus {
+      max-width: 34em;
+      margin: 8px auto 0;
+      font-size: 1.1rem;
+      color: var(--slate);
     }
 
-    /* ================================
-       BUTTONS
-    ================================= */
-
-    .custom-buttons {
+    .hero-actions {
       margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
     }
 
-    .custom-btn {
+    .hero-btn {
       display: inline-block;
-      padding: 11px 24px;
-      margin: 5px;
-      border: 2px solid #fff;
+      min-width: 170px;
+      padding: 12px 24px;
+      border: 1.5px solid var(--ink);
       border-radius: 4px;
-      color: #fff;
+      font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.25s ease;
     }
 
-    .custom-btn:hover {
-      background: #fff;
-      color: #333;
-      text-decoration: none;
-      transform: translateY(-2px);
-    }
-
-    .custom-btn-dark {
-      border-color: #369;
-      color: #369;
-    }
-
-    .custom-btn-dark:hover {
-      background: #369;
+    .hero-btn-solid {
+      background: var(--ink);
       color: #fff;
     }
 
+    .hero-btn-solid:hover,
+    .hero-btn-solid:focus {
+      background: var(--slate);
+      border-color: var(--slate);
+      color: #fff;
+    }
+
+    .hero-btn-line {
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--ink);
+    }
+
+    .hero-btn-line:hover,
+    .hero-btn-line:focus {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    /* One quiet entrance on page load */
+    @media (prefers-reduced-motion: no-preference) {
+      .tm-hero-text-container-inner > * {
+        animation: heroIn 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      .tm-hero-text-container-inner > :nth-child(2) { animation-delay: 0.12s; }
+      .tm-hero-text-container-inner > :nth-child(3) { animation-delay: 0.2s; }
+      .tm-hero-text-container-inner > :nth-child(4) { animation-delay: 0.28s; }
+      .tm-hero-text-container-inner > :nth-child(5) { animation-delay: 0.36s; }
+
+      @keyframes heroIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: none; }
+      }
+    }
+
+    html.no-anim .tm-hero-text-container-inner > * {
+      animation: none;
+    }
+
     /* ================================
-       SECTION INTRO
+       ABOUT
     ================================= */
 
     .section-lead {
-      max-width: 760px;
-      margin: 0 auto 40px;
+      max-width: 720px;
+      margin: 0 auto 30px;
       line-height: 1.8;
-      font-size: 1.05rem;
+      font-size: 1.12rem;
     }
 
     /* ================================
-       EXPERIENCE
+       EXPERIENCE (a real timeline, newest first)
     ================================= */
 
+    .experience-list {
+      max-width: 760px;
+      margin: 10px auto 0;
+    }
+
     .experience-item {
-      margin-bottom: 30px;
+      position: relative;
+      padding: 0 0 30px 30px;
+      border-left: 1px solid var(--line);
+    }
+
+    .experience-item:last-of-type {
+      border-left-color: transparent;
+    }
+
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 0.55em;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--brass);
+      box-shadow: 0 0 0 4px #fff;
     }
 
     .experience-item h4 {
-      margin-bottom: 5px;
+      font-size: 1.3rem;
       font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    .experience-item h4 i {
+      color: var(--slate);
+      font-size: 0.9em;
+    }
+
+    .experience-item h4 a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 4px;
+    }
+
+    .experience-item h4 a:hover {
+      text-decoration-color: var(--brass);
+    }
+
+    .experience-role {
+      font-family: var(--sans);
+      font-weight: 600;
+      color: var(--slate);
+      font-size: 1.05rem;
     }
 
     .experience-date {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
 
     .experience-item p {
-      line-height: 1.75;
+      margin-bottom: 0;
     }
 
     /* ================================
        PROJECTS
+       Desktop: all three side by side.
+       Tablet & phone: swipeable row with visible arrows and dots.
     ================================= */
 
+    #projects {
+      background-color: var(--ink);
+      color: rgba(255, 255, 255, 0.86);
+      padding-bottom: 90px;
+    }
+
+    #projects .tm-section-title {
+      color: #fff;
+    }
+
+    #projects .tm-section-desc {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .projects-wrap {
+      max-width: 1140px;
+      margin: 50px auto 0;
+    }
+
+    .projects-track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
     .project-card {
-      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 16px 16px 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
     }
 
     .project-image-link {
       display: block;
-      position: relative;
       overflow: hidden;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      border-radius: 6px;
+      background: var(--ink-deep);
     }
 
     .project-image-link img {
-      width: 100%;
       display: block;
-      transition: transform 0.35s ease;
-    }
-
-    .project-image-link:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.4s ease;
     }
 
     .project-image-link:hover img {
-      transform: scale(1.04);
-    }
-
-    .project-description {
-      margin-top: 18px;
-      line-height: 1.7;
+      transform: scale(1.03);
     }
 
     .project-title {
-      margin-top: 18px;
-      font-size: 1.25rem;
+      margin: 20px 0 0;
+      font-size: 1.4rem;
       font-weight: 600;
     }
 
     .project-title a {
-      color: inherit;
+      color: #fff;
       text-decoration: none;
     }
 
     .project-title a:hover {
-      color: #4da6ff;
+      color: var(--brass-light);
+    }
+
+    .project-description {
+      margin: 10px 0 0;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+      flex-grow: 1;
     }
 
     .project-buttons {
-      margin-top: 15px;
+      margin-top: 18px;
     }
 
     .project-btn {
       display: inline-block;
-      padding: 7px 15px;
-      margin-right: 6px;
-      border: 1px solid rgba(255,255,255,0.7);
+      padding: 8px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 4px;
       color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.92rem;
+      font-weight: 600;
       text-decoration: none;
-      transition: all 0.25s ease;
     }
 
-    .project-btn:hover {
+    .project-btn:hover,
+    .project-btn:focus {
       background: #fff;
-      color: #333;
+      border-color: #fff;
+      color: var(--ink);
       text-decoration: none;
+    }
+
+    .projects-nav {
+      display: none;
+    }
+
+    @media (max-width: 991px) {
+
+      .projects-wrap {
+        margin-top: 36px;
+      }
+
+      .projects-track {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 4px 8vw 6px;
+        margin: 0 -15px;
+        scroll-padding: 0 8vw;
+      }
+
+      .projects-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .project-card {
+        flex: 0 0 min(84vw, 440px);
+        scroll-snap-align: center;
+      }
+
+      .projects-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 26px;
+      }
+
+      .projects-arrow {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: #fff;
+        color: var(--ink);
+        font-size: 1rem;
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+      }
+
+      .projects-arrow:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+
+      .projects-dots {
+        display: flex;
+        gap: 10px;
+      }
+
+      .projects-dot {
+        width: 11px;
+        height: 11px;
+        padding: 0;
+        border: 1.5px solid #fff;
+        border-radius: 999px;
+        background: transparent;
+        cursor: pointer;
+        transition: width 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+      }
+
+      .projects-dot.is-active {
+        width: 28px;
+        background: var(--brass-light);
+        border-color: var(--brass-light);
+      }
     }
 
     /* ================================
        PHOTOGRAPHY
     ================================= */
 
-    .tm-gallery-item {
-      transition: transform 0.3s ease;
+    #photography .slick-prev:before,
+    #photography .slick-next:before {
+      color: var(--ink);
     }
 
-    .tm-gallery-item:hover {
-      transform: translateY(-4px);
+    #photography .slick-dots li button:before {
+      color: var(--ink);
+      opacity: 0.25;
+    }
+
+    #photography .slick-dots li.slick-active button:before,
+    #photography .slick-dots li button:hover:before {
+      color: var(--brass);
+      opacity: 1;
+    }
+
+    figure.effect-honey {
+      background: var(--ink);
+    }
+
+    figure.effect-honey figcaption::before {
+      background: var(--brass);
+    }
+
+    .grid figure figcaption {
+      text-transform: none;
+      font-family: var(--serif);
     }
 
     /* ================================
        CONTACT
+       The Zagreb sunset photo stays, with a dark wash so the text reads.
     ================================= */
 
+    #contact {
+      background-color: var(--ink-deep);
+      background-size: cover;
+    }
+
+    #contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(20, 32, 42, 0.82) 0%,
+        rgba(20, 32, 42, 0.5) 55%,
+        rgba(20, 32, 42, 0.8) 100%
+      );
+      pointer-events: none;
+    }
+
+    #contact .tm-container-contact {
+      position: relative;
+      z-index: 1;
+    }
+
+    #contact .tm-section-title,
+    #contact h4 {
+      color: #fff;
+    }
+
     .contact-intro {
-      max-width: 650px;
+      max-width: 620px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .contact-item {
-      margin-bottom: 20px;
+      margin-bottom: 26px;
     }
 
-    .contact-item .item-link {
-      transition: all 0.25s ease;
+    .item-link:hover i,
+    .item-link:hover span {
+      color: var(--brass-light);
     }
 
-    .contact-item .item-link:hover {
-      transform: translateX(5px);
-      text-decoration: none;
+    .contact-cta-icon {
+      font-size: 2.6rem;
+      margin-bottom: 18px;
+      color: var(--brass-light);
+    }
+
+    #contact .tm-btn-primary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    #contact .tm-btn-primary:hover,
+    #contact .tm-btn-primary:focus {
+      background: var(--mist);
+      color: var(--ink);
+    }
+
+    .tm-footer {
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .tm-footer p {
+      line-height: 1.6;
+    }
+
+    /* Background-attachment "fixed" breaks on phones (especially iPhone) */
+    @media (max-width: 991px) {
+      .tm-parallax-2 {
+        background-attachment: scroll !important;
+      }
     }
 
     /* ================================
@@ -263,19 +745,34 @@
 
     @media (max-width: 768px) {
 
-      .tm-hero-title {
-        font-size: 2.8rem;
+      .tm-section-title {
+        font-size: 2.1rem;
       }
 
       .tm-hero-subtitle {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
       }
 
-      .tm-hero-description {
-        font-size: 0.95rem;
-        padding: 0 15px;
+      .hero-focus {
+        font-size: 1rem;
       }
 
+      .tm-hero-text-container-inner::before {
+        inset: -12% -6%;
+      }
+
+      .contact-item {
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-btn {
+        min-width: 0;
+        flex: 1 1 0;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
     }
 
   </style>
@@ -287,17 +784,14 @@
      HERO
 ========================================================= -->
 
-<section id="infinite" class="text-white tm-font-big tm-parallax">
+<section id="infinite" class="tm-font-big tm-parallax">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
-
     <div class="container">
 
       <div class="tm-next">
-        <a href="#infinite" class="navbar-brand">
-          Tvrtko Šapina
-        </a>
+        <a href="#infinite" class="navbar-brand">Tvrtko Šapina</a>
       </div>
 
       <button
@@ -313,69 +807,46 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
         <ul class="navbar-nav ml-auto">
-
-          <li class="nav-item">
-            <a class="nav-link tm-nav-link" href="#infinite">
-              Home
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link tm-nav-link" href="#about">
-              About
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link tm-nav-link" href="#experience">
-              Experience
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link tm-nav-link" href="#projects">
-              Projects
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link tm-nav-link" href="#photography">
-              Photography
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link tm-nav-link" href="#contact">
-              Contact
-            </a>
-          </li>
-
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#infinite">Home</a></li>
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#photography">Photography</a></li>
+          <li class="nav-item"><a class="nav-link tm-nav-link" href="#contact">Contact</a></li>
         </ul>
-
       </div>
 
     </div>
-
   </nav>
 
-
   <!-- Hero content -->
-
   <div class="text-center tm-hero-text-container">
-
     <div class="tm-hero-text-container-inner">
 
-      <h1 class="tm-hero-title">
-        Tvrtko Šapina
-      </h1>
+      <h1 class="tm-hero-title">Tvrtko Šapina</h1>
+
+      <span class="hero-rule" aria-hidden="true"></span>
 
       <p class="tm-hero-subtitle">
-        Mathematics Student 
+        Mathematics student at the University of Zagreb
       </p>
-    </div>
 
+      <p class="hero-focus">
+        Quantitative finance, mathematical modelling and machine learning
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="hero-btn hero-btn-solid">See my projects</a>
+        <a
+          href="CV_Tvrtko_Šapina.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-btn hero-btn-line"
+        >View CV</a>
+      </div>
+
+    </div>
   </div>
 
 </section>
@@ -386,42 +857,36 @@
 ========================================================= -->
 
 <section id="about" class="tm-section-pad-top">
-
   <div class="container">
-
     <div class="row">
-
       <div class="col-lg-12">
-
         <div class="tm-intro-text-container text-center">
 
-          <h2 class="tm-text-primary mb-4 tm-section-title">
-            About me
-          </h2>
+          <h2 class="tm-text-primary mb-4 tm-section-title">About me</h2>
 
           <p class="section-lead">
-
             I am a third-year Mathematics student at the
             <a
               href="https://www.pmf.unizg.hr/math"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              University of Zagreb, Faculty of Science
-            </a>.
-
-            My main interests are quantitative finance, mathematical modelling, and machine learning. I have experience in using mainly Python and C for data science and financial analysis.
-
+            >University of Zagreb, Faculty of Science</a>. <br>
+            My main interests are quantitative finance, mathematical modelling
+            and machine learning, and I mostly work in Python on data
+            science and financial analysis. I am a member of the Algorithmic
+            Trading and Market Analysis group at
+            <a
+              href="https://finance.hr/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Financijski klub</a>,
+            and I recently completed the <a href = "https://akunacapital.com">Akuna Capital </a><a href = "https://akunacapital.com/work-with-us/options-101/">Options 101 Course</a>.
           </p>
 
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
 
 
@@ -430,138 +895,90 @@
 ========================================================= -->
 
 <section id="experience" class="tm-section-pad-top">
-
   <div class="container">
-
     <div class="row">
-
       <div class="col-lg-12">
 
-        <div class="tm-intro-text-container">
+        <h2 class="tm-text-primary mb-5 tm-section-title text-center">Experience</h2>
 
-          <h2 class="tm-text-primary mb-4 tm-section-title text-center">
-            Experience
-          </h2>
-
+        <div class="experience-list">
 
           <!-- InterCapital -->
-
           <div class="experience-item">
-
             <h4>
               <i class="fas fa-chart-line mr-2"></i>
-
               <a
                 href="https://inter.capital/"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                InterCapital Academy
-              </a>
+              >InterCapital Academy</a>
             </h4>
-
-            <div class="experience-date">
-              Sep 2026
-            </div>
-
+            <div class="experience-date">Sep 2026</div>
             <p>
               The program covered macroeconomic analysis, valuation of
               bonds, equities and real estate, portfolio management
               and trading.
             </p>
-
           </div>
 
-
           <!-- Hrvatski Telekom -->
-
           <div class="experience-item">
-
             <h4>
               <i class="fas fa-database mr-2"></i>
-
               <a
                 href="https://www.t.ht.hr/"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                Hrvatski Telekom
-              </a>
-
-              — Student Data Scientist
+              >Hrvatski Telekom</a>
             </h4>
-
-            <div class="experience-date">
-              Jul 2026 – Sep 2026
-            </div>
-
+            <div class="experience-role">Student Data Scientist</div>
+            <div class="experience-date">Jul 2026 – Sep 2026</div>
             <p>
               Performed feature engineering for a customer credit
               risk assessment model and extracted relevant data
               from SQL databases.
             </p>
-
           </div>
 
-
           <!-- E.ON -->
-
           <div class="experience-item">
-
             <h4>
               <i class="fas fa-bolt mr-2"></i>
-
               <a
                 href="https://www.eon.hr/hr.html"
                 target="_blank"
                 rel="noopener noreferrer"
-              >
-                E.ON
-              </a>
-
-              — Controlling & Risk Management Intern
+              >E.ON</a>
             </h4>
-
-            <div class="experience-date">
-              Mar 2025 – Jul 2025
-            </div>
-
+            <div class="experience-role">Controlling &amp; Risk Management Intern</div>
+            <div class="experience-date">Mar 2025 – Jul 2025</div>
             <p>
               Developed a Python tool for automating the extraction
               of market data from the HUDEX energy exchange.
-
               Built a pricing tool using polynomial interpolation
               to estimate monthly natural-gas prices from quarterly
               and annual forward prices.
             </p>
-
-          </div>
-
-
-          <!-- CV -->
-
-          <div class="text-center mt-4">
-
-            <a
-              href="CV_Tvrtko_Šapina.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="tm-btn-primary"
-            >
-              <i class="fas fa-file-pdf mr-2"></i>
-              View CV
-            </a>
-
           </div>
 
         </div>
 
+        <!-- CV -->
+        <div class="text-center mt-4">
+          <a
+            href="CV_Tvrtko_Šapina.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tm-btn-primary"
+          >
+            <i class="fas fa-file-pdf mr-2"></i>
+            View CV
+          </a>
+        </div>
+
       </div>
-
     </div>
-
   </div>
-
 </section>
 
 
@@ -569,84 +986,56 @@
      PROJECTS
 ========================================================= -->
 
-<section
-  id="projects"
-  class="tm-section-pad-top tm-parallax-2"
->
-
-  <div class="container tm-testimonials-content">
-
+<section id="projects" class="tm-section-pad-top">
+  <div class="container">
     <div class="row">
-
       <div class="col-lg-12">
 
-        <h2 class="tm-text-primary mb-4 tm-section-title text-center">
-          Projects
-        </h2>
+        <h2 class="mb-4 tm-section-title text-center">Projects</h2>
 
         <p class="mx-auto tm-section-desc text-center">
-
-          Here are some of my projects. Feel free to check them out.
-
+          A selection of my work in option pricing, portfolio analysis
+          and machine learning.
         </p>
 
+        <div class="projects-wrap">
 
-        <div class="mx-auto tm-gallery-container tm-gallery-container-2">
+          <div class="projects-track" id="projectsTrack">
 
-          <div class="tm-testimonials-carousel">
-
-
-            <!-- =================================================
-                 PROJECT 1
-            ================================================== -->
-
-            <figure class="tm-testimonial-item project-card">
-
+            <!-- PROJECT 1 -->
+            <article class="project-card">
               <a
                 href="https://optionpricingtoolkit-dewbzm3qzn6d2rh3caof8n.streamlit.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project-image-link"
               >
-
                 <img
                   src="img/testimonial-img-02.jpg"
                   alt="Option Pricing Toolkit project"
-                  class="img-fluid mx-auto"
+                  loading="lazy"
                 >
-
               </a>
 
-
               <h3 class="project-title">
-
                 <a
                   href="https://optionpricingtoolkit-dewbzm3qzn6d2rh3caof8n.streamlit.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  Option Pricing Toolkit
-                </a>
-
+                >Option Pricing Toolkit</a>
               </h3>
 
-
-              <blockquote class="project-description">
-
+              <p class="project-description">
                 Developed a Python toolkit for pricing European,
                 American and Bermudan call and put options using
-                CRR binomial trees, Black-Scholes and Monte Carlo
-                simulation.
-
-                Implemented Euler-Maruyama, tamed Euler and Milstein
-                numerical schemes for solving stochastic differential
-                equations.
-
-              </blockquote>
-
+                CRR binomial tree, Black-Scholes and Monte Carlo
+                simulation with Greeks estimation. Showed visually 
+		convergence of binomial tree estimation to Black-Scholes 
+		formula. Implemented Euler-Maruyama, tamed Euler and Milstein 
+		numerical schemes for solving SDEs.
+              </p>
 
               <div class="project-buttons">
-
                 <a
                   href="https://optionpricingtoolkit-dewbzm3qzn6d2rh3caof8n.streamlit.app/"
                   target="_blank"
@@ -654,63 +1043,97 @@
                   class="project-btn"
                 >
                   <i class="fas fa-external-link-alt mr-1"></i>
-                  Live Demo
+                  Live demo
+                </a>
+              </div>
+              <div class="project-buttons">
+                <a
+                  href="https://github.com/tvrtkosapina/option_pricing_toolkit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-btn"
+                >
+                  <i class="fab fa-github mr-1"></i>
+                  Code
                 </a>
 
-              </div>
+          </div>
+            </article>
 
-            </figure>
+            <!-- PROJECT 2
+                 NOTE: these links currently point to the Option Pricing app.
+                 Replace them with the Backtesting engine's own link. -->
+            <article class="project-card">
+              <a
+                href="https://github.com/tvrtkosapina/backtesting_engine"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-image-link"
+              >
+                <img
+                  src="img/testimonial-img-03.jpg"
+                  alt="Backtesting engine project"
+                  loading="lazy"
+                >
+              </a>
 
+              <h3 class="project-title">
+                <a
+                  href="https://github.com/tvrtkosapina/backtesting_engine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Backtesting Engine</a>
+              </h3>
 
-            <!-- =================================================
-                 PROJECT 2
-            ================================================== -->
+              <p class="project-description">
+                Developed Python code for portfolio construction,
+                risk analysis, mean variance portfolio optimisation and backtesting trading strategies
+		which I used to analyse mean reversion and pair trading strategies across Apple, Microsoft, Tesla, Eli-Lilly, Mercedes-Benz, Coca-Cola, Walmart and Nestle stocks.
+              </p>
+              <div class="project-buttons">
+                <a
+                  href="https://github.com/tvrtkosapina/backtesting_engine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-btn"
+                >
+                  <i class="fab fa-github mr-1"></i>
+                  Code
+                </a>
+          </div>
+            </article>
 
-            <figure class="tm-testimonial-item project-card">
-
+            <!-- PROJECT 3 -->
+            <article class="project-card">
               <a
                 href="https://github.com/tvrtkosapina/portfolio"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project-image-link"
               >
-
                 <img
                   src="img/testimonial-img-01.jpg"
                   alt="Banknote Authentication machine learning project"
-                  class="img-fluid mx-auto"
+                  loading="lazy"
                 >
-
               </a>
 
-
               <h3 class="project-title">
-
                 <a
                   href="https://github.com/tvrtkosapina/portfolio"
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  Banknote Authentication
-                </a>
-
+                >Banknote Authentication</a>
               </h3>
 
-
-              <blockquote class="project-description">
-
+              <p class="project-description">
                 Performed data preprocessing and explored
-                clustering-based approaches.
-
-                Trained and compared supervised learning models
-                including logistic regression, SVM, decision tree
-                and gradient boosting.
-
-              </blockquote>
-
+                clustering-based approaches to the problem. Trained and compared
+                supervised learning models including logistic
+                regression, SVM, decision tree and gradient boosting.
+              </p>
 
               <div class="project-buttons">
-
                 <a
                   href="https://github.com/tvrtkosapina/portfolio"
                   target="_blank"
@@ -718,26 +1141,29 @@
                   class="project-btn"
                 >
                   <i class="fab fa-github mr-1"></i>
-                  GitHub
+                  Code
                 </a>
-
               </div>
+            </article>
 
-            </figure>
+          </div>
 
-
+          <!-- Arrows and dots (shown on tablet and phone only) -->
+          <div class="projects-nav" id="projectsNav">
+            <button class="projects-arrow" type="button" data-dir="-1" aria-label="Previous project">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="projects-dots" id="projectsDots"></div>
+            <button class="projects-arrow" type="button" data-dir="1" aria-label="Next project">
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
 
         </div>
 
       </div>
-
     </div>
-
   </div>
-
-  <div class="tm-bg-overlay"></div>
-
 </section>
 
 
@@ -750,268 +1176,106 @@
   <div class="container tm-container-gallery">
 
     <div class="row">
-
       <div class="text-center col-12">
-
-        <h2 class="tm-text-primary tm-section-title mb-4">
-          Photography
-        </h2>
-
+        <h2 class="tm-text-primary tm-section-title mb-4">Photography</h2>
         <p class="mx-auto tm-section-desc">
-
           In my free time, I am an amateur photographer.
-          Here is a selection of my work.
-
+          Every photo on this site is my own. Here is a selection of my work.
         </p>
-
       </div>
-
     </div>
 
-
     <div class="row">
-
       <div class="col-12">
-
         <div class="mx-auto tm-gallery-container">
-
           <div class="grid tm-gallery">
 
-
             <!-- Photo 1 -->
-
             <a href="img/gallery-img-01.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-01.jpg"
-                  alt="Mountain landscape at Lago di Braie"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-01.jpg" alt="Mountain landscape at Lago di Braie" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      Lago di Braie
-                      <span>2025</span>
-                    </i>
-                  </h2>
-
+                  <h2><i>Lago di Braie <span>2025</span></i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 2 -->
-
             <a href="img/gallery-img-02.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-02.jpg"
-                  alt="Fruit photography"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-02.jpg" alt="Fruit photography" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      Fruit Fantasy
-                      <span>Zagreb 2024</span>
-                    </i>
-                  </h2>
-
+                  <h2><i>Fruit Fantasy <span>Zagreb 2024</span></i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 3 -->
-
             <a href="img/gallery-img-05.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-05.jpg"
-                  alt="City view of Zagreb"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-05.jpg" alt="City view of Zagreb" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      <span>City View</span>
-                      Zagreb 2023
-                    </i>
-                  </h2>
-
+                  <h2><i><span>City View</span> Zagreb 2023</i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 4 -->
-
             <a href="img/gallery-img-03.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-03.jpg"
-                  alt="Spring landscape in Vitez"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-03.jpg" alt="Spring landscape in Vitez" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      <span>Spring</span>
-                      Vitez 2023
-                    </i>
-                  </h2>
-
+                  <h2><i><span>Spring</span> Vitez 2023</i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 5 -->
-
             <a href="img/gallery-img-04.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-04.jpg"
-                  alt="Mountain landscape in Les Orres"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-04.jpg" alt="Mountain landscape in Les Orres" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      <span>Among the Clouds</span>
-                      Les Orres 2022
-                    </i>
-                  </h2>
-
+                  <h2><i><span>Among the Clouds</span> Les Orres 2022</i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 6 -->
-
             <a href="img/gallery-img-06.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-06.jpg"
-                  alt="Countryside landscape in Vitez"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-06.jpg" alt="Countryside landscape in Vitez" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      Countryside
-                      <span>Vitez</span>
-                    </i>
-                  </h2>
-
+                  <h2><i>Countryside <span>Vitez</span></i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 7 -->
-
             <a href="img/gallery-img-07.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-07.jpg"
-                  alt="Cold coffee at Nu Bar"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-07.jpg" alt="Cold coffee at Nu Bar" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      Cold Coffee
-                      <span>Nu Bar</span>
-                    </i>
-                  </h2>
-
+                  <h2><i>Cold Coffee <span>Nu Bar</span></i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
-
 
             <!-- Photo 8 -->
-
             <a href="img/gallery-img-08.jpg">
-
               <figure class="effect-honey tm-gallery-item">
-
-                <img
-                  src="img/gallery-tn-08.jpg"
-                  alt="Fog in the mountains of Vlašić"
-                  class="img-fluid"
-                >
-
+                <img src="img/gallery-tn-08.jpg" alt="Fog in the mountains of Vlašić" class="img-fluid">
                 <figcaption>
-
-                  <h2>
-                    <i>
-                      Fog in the Mountains
-                      <span>Vlašić</span>
-                    </i>
-                  </h2>
-
+                  <h2><i>Fog in the Mountains <span>Vlašić</span></i></h2>
                 </figcaption>
-
               </figure>
-
             </a>
 
-
           </div>
-
         </div>
-
       </div>
-
     </div>
 
   </div>
-
 </section>
 
 
@@ -1019,123 +1283,70 @@
      CONTACT
 ========================================================= -->
 
-<section
-  id="contact"
-  class="tm-section-pad-top tm-parallax-2"
->
+<section id="contact" class="tm-section-pad-top tm-parallax-2">
 
   <div class="container tm-container-contact">
-
     <div class="row">
 
       <div class="text-center col-12">
-
-        <h2 class="tm-section-title mb-4">
-          Get in touch
-        </h2>
-
+        <h2 class="tm-section-title mb-4">Get in touch</h2>
         <p class="mb-5 contact-intro">
-
-          The easiest way to reach me is by email or via LinkedIn. I am happy to discuss projects, research, internships or potential collaborations.
-
+          The easiest way to reach me is by email or via LinkedIn.
+          I am happy to discuss projects, research, internships
+          or potential collaborations.
         </p>
-
       </div>
-
 
       <div class="col-sm-12 col-md-6">
 
         <div class="contact-item">
-
           <a
             href="https://www.linkedin.com/in/tvrtko-%C5%A1apina-499057361/"
             target="_blank"
             rel="noopener noreferrer"
             class="item-link"
           >
-
             <i class="fab fa-linkedin fa-2x mr-4"></i>
-
-            <span>
-              LinkedIn
-            </span>
-
+            <span>LinkedIn</span>
           </a>
-
         </div>
 
-
         <div class="contact-item">
-
           <a
             href="https://github.com/tvrtkosapina"
             target="_blank"
             rel="noopener noreferrer"
             class="item-link"
           >
-
             <i class="fab fa-github fa-2x mr-4"></i>
-
-            <span>
-              GitHub
-            </span>
-
+            <span>GitHub</span>
           </a>
-
         </div>
 
       </div>
 
-
       <!-- Contact CTA -->
-
       <div class="col-sm-12 col-md-6 text-center">
-
         <div style="padding-top: 10px;">
-
-          <i
-            class="fas fa-paper-plane"
-            style="font-size: 3rem; margin-bottom: 20px;"
-          ></i>
-
-          <h4 class="mb-3">
-            Let's connect
-          </h4>
-
-
-          <a
-            href="mailto:tsapina.math@pmf.hr"
-            class="tm-btn-primary"
-          >
-
+          <i class="fas fa-paper-plane contact-cta-icon"></i>
+          <h4 class="mb-3">Let’s connect</h4>
+          <a href="mailto:tsapina.math@pmf.hr" class="tm-btn-primary">
             <i class="far fa-envelope mr-2"></i>
             Send me an email
-
           </a>
-
         </div>
-
       </div>
 
     </div>
-
   </div>
 
-
   <!-- Footer -->
-
   <footer class="text-center small tm-footer">
-
     <p class="mb-0">
-
       Copyright &copy; 2026 Tvrtko Šapina
-
       <span style="margin: 0 8px;">|</span>
-
-      Designed & developed by Tvrtko Šapina
-
+      Designed &amp; developed by Tvrtko Šapina
     </p>
-
   </footer>
 
 </section>
@@ -1146,153 +1357,123 @@
 ========================================================= -->
 
 <script src="js/jquery-1.9.1.min.js"></script>
-
 <script src="slick/slick.min.js"></script>
-
 <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-
 <script src="js/easing.min.js"></script>
-
 <script src="js/jquery.singlePageNav.min.js"></script>
-
 <script src="js/bootstrap.min.js"></script>
-
 
 <script>
 
   /* ============================================
-     PARALLAX
+     CONTACT PARALLAX (desktop only)
+     The hero no longer uses the scripted parallax: it was the reason the
+     photo sat at the top of the screen with a dark band underneath.
   ============================================ */
 
-  function getOffSet() {
+  var background_image_parallax_2 = function($object, multiplier) {
 
-    var _offset = 450;
-
-    var windowHeight = window.innerHeight;
-
-    if (windowHeight > 500) {
-      _offset = 400;
-    }
-
-    if (windowHeight > 680) {
-      _offset = 300;
-    }
-
-    if (windowHeight > 830) {
-      _offset = 210;
-    }
-
-    return _offset;
-  }
-
-
-  function setParallaxPosition($doc, multiplier, $object) {
-
-    var offset = getOffSet();
-
-    var from_top = $doc.scrollTop();
-
-    var bg_css =
-      'center ' +
-      (multiplier * from_top - offset) +
-      'px';
-
-    $object.css({
-      "background-position": bg_css
-    });
-
-  }
-
-
-  var background_image_parallax = function(
-    $object,
-    multiplier,
-    forceSet
-  ) {
-
-    multiplier =
-      typeof multiplier !== 'undefined'
-        ? multiplier
-        : 0.5;
-
+    multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
     multiplier = 1 - multiplier;
 
-    var $doc = $(document);
+    $(window).scroll(function() {
 
-    if (forceSet) {
+      if ($(window).width() > 991) {
 
-      setParallaxPosition(
-        $doc,
-        multiplier,
-        $object
-      );
+        $object.css({ "background-attachment": "fixed" });
 
-    } else {
+        var firstTop = $object.offset().top;
+        var pos = $(window).scrollTop();
+        var yPos = Math.round((multiplier * (firstTop - pos)) - 186);
 
-      $(window).scroll(function() {
+        $object.css({ "background-position": 'center ' + yPos + 'px' });
 
-        setParallaxPosition(
-          $doc,
-          multiplier,
-          $object
-        );
+      } else {
 
-      });
+        $object.css({
+          "background-attachment": "scroll",
+          "background-position": "center"
+        });
 
-    }
+      }
+
+    });
 
   };
 
 
-  var background_image_parallax_2 =
-    function($object, multiplier) {
+  /* ============================================
+     PROJECTS: swipe row with arrows + dots (tablet & phone)
+  ============================================ */
 
-      multiplier =
-        typeof multiplier !== 'undefined'
-          ? multiplier
-          : 0.5;
+  function initProjects() {
 
-      multiplier = 1 - multiplier;
+    var track = document.getElementById('projectsTrack');
+    var dotsBox = document.getElementById('projectsDots');
+    var nav = document.getElementById('projectsNav');
+    if (!track || !dotsBox || !nav) return;
 
-      var $doc = $(document);
+    var cards = track.querySelectorAll('.project-card');
+    var arrows = nav.querySelectorAll('.projects-arrow');
+    var dots = [];
 
-      $object.css({
-        "background-attachment": "fixed"
+    for (var i = 0; i < cards.length; i++) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'projects-dot';
+      dot.setAttribute('aria-label', 'Show project ' + (i + 1) + ' of ' + cards.length);
+      (function(index) {
+        dot.addEventListener('click', function() { goTo(index); });
+      })(i);
+      dotsBox.appendChild(dot);
+      dots.push(dot);
+    }
+
+    function currentIndex() {
+      var center = track.scrollLeft + track.clientWidth / 2;
+      var best = 0, bestDist = Infinity;
+      for (var i = 0; i < cards.length; i++) {
+        var c = cards[i].offsetLeft + cards[i].offsetWidth / 2;
+        var d = Math.abs(c - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      return best;
+    }
+
+    function goTo(index) {
+      index = Math.max(0, Math.min(cards.length - 1, index));
+      var card = cards[index];
+      var left = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+      track.scrollTo({ left: left, behavior: 'smooth' });
+    }
+
+    function update() {
+      var idx = currentIndex();
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('is-active', i === idx);
+        dots[i].setAttribute('aria-current', i === idx ? 'true' : 'false');
+      }
+      arrows[0].disabled = idx === 0;
+      arrows[1].disabled = idx === cards.length - 1;
+    }
+
+    for (var a = 0; a < arrows.length; a++) {
+      arrows[a].addEventListener('click', function() {
+        goTo(currentIndex() + parseInt(this.getAttribute('data-dir'), 10));
       });
+    }
 
-      $(window).scroll(function() {
+    var ticking = false;
+    track.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() { update(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
 
-        if ($(window).width() > 768) {
-
-          var firstTop = $object.offset().top;
-
-          var pos = $(window).scrollTop();
-
-          var yPos =
-            Math.round(
-              (multiplier * (firstTop - pos)) - 186
-            );
-
-          var bg_css =
-            'center ' +
-            yPos +
-            'px';
-
-          $object.css({
-            "background-position": bg_css
-          });
-
-        } else {
-
-          $object.css({
-            "background-position": "center"
-          });
-
-        }
-
-      });
-
-    };
+    window.addEventListener('resize', update);
+    update();
+  }
 
 
   /* ============================================
@@ -1301,247 +1482,72 @@
 
   $(function() {
 
+    background_image_parallax_2($("#contact"), 0.80);
 
-    /* Hero parallax */
-
-    background_image_parallax(
-      $(".tm-parallax"),
-      0.30,
-      false
-    );
-
-
-    /* Section parallax */
-
-    background_image_parallax_2(
-      $("#contact"),
-      0.80
-    );
-
-    background_image_parallax_2(
-      $("#projects"),
-      0.80
-    );
-
-
-    /* Resize */
-
-    window.addEventListener(
-      'resize',
-      function() {
-
-        background_image_parallax(
-          $(".tm-parallax"),
-          0.30,
-          true
-        );
-
-      },
-      true
-    );
-
-
-    /* Navbar */
-
-    $(window).scroll(function() {
-
+    /* Navbar background after scrolling */
+    function setNavState() {
       if ($(document).scrollTop() > 120) {
-
         $('.tm-navbar').addClass("scroll");
-
       } else {
-
         $('.tm-navbar').removeClass("scroll");
-
       }
+    }
+    $(window).scroll(setNavState);
+    setNavState();
 
+    /* Close mobile menu after choosing a link */
+    $('#tmNav a').on('click', function() {
+      $('.navbar-collapse').removeClass('show');
     });
 
-
-    /* Mobile menu */
-
-    $('#tmNav a').on(
-      'click',
-      function() {
-
-        $('.navbar-collapse').removeClass('show');
-
-      }
-    );
-
-
-    /* Smooth navigation */
-
+    /* Highlight the current section in the menu */
     $('#tmNav').singlePageNav({
       'easing': 'easeInOutExpo',
       'speed': 1
     });
 
-
-    /* Smooth scrolling */
-
-    $("a").on(
-      'click',
-      function(event) {
-
-        if (this.hash !== "") {
-
-          event.preventDefault();
-
-          var hash = this.hash;
-
-          $('html, body').animate(
-            {
-              scrollTop:
-                $(hash).offset().top
-            },
-            600,
-            'easeInOutExpo',
-            function() {
-
-              window.location.hash = hash;
-
-            }
-          );
-
-        }
-
+    /* Smooth scrolling for in-page links */
+    $("a").on('click', function(event) {
+      if (this.hash !== "" && this.pathname === window.location.pathname && $(this.hash).length) {
+        event.preventDefault();
+        var hash = this.hash;
+        $('html, body').animate(
+          { scrollTop: $(hash).offset().top },
+          600,
+          'easeInOutExpo',
+          function() { window.location.hash = hash; }
+        );
       }
-    );
+    });
 
-
-    /* ============================================
-       PHOTO LIGHTBOX
-    ============================================ */
-
+    /* Photo lightbox */
     $('.tm-gallery').magnificPopup({
-
       delegate: 'a',
-
       type: 'image',
-
-      gallery: {
-        enabled: true
-      },
-
+      gallery: { enabled: true },
       image: {
         titleSrc: function(item) {
-
-          return item.el
-            .find('h2')
-            .text();
-
+          return item.el.find('h2').text();
         }
       }
-
     });
 
+    /* Projects */
+    initProjects();
 
-    /* ============================================
-       PROJECT CAROUSEL
-    ============================================ */
-
-    $('.tm-testimonials-carousel').slick({
-
-      dots: true,
-
-      prevArrow: false,
-
-      nextArrow: false,
-
-      infinite: false,
-
-      slidesToShow: 2,
-
-      slidesToScroll: 1,
-
-      responsive: [
-
-        {
-          breakpoint: 992,
-
-          settings: {
-            slidesToShow: 2
-          }
-        },
-
-        {
-          breakpoint: 768,
-
-          settings: {
-            slidesToShow: 1
-          }
-        },
-
-        {
-          breakpoint: 480,
-
-          settings: {
-            slidesToShow: 1
-          }
-        }
-
-      ]
-
-    });
-
-
-    /* ============================================
-       PHOTOGRAPHY CAROUSEL
-    ============================================ */
-
+    /* Photography carousel */
     $('.tm-gallery').slick({
-
       dots: true,
-
       infinite: false,
-
       slidesToShow: 5,
-
       slidesToScroll: 2,
-
       responsive: [
-
-        {
-          breakpoint: 1199,
-
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 2
-          }
-        },
-
-        {
-          breakpoint: 991,
-
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 2
-          }
-        },
-
-        {
-          breakpoint: 767,
-
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1
-          }
-        },
-
-        {
-          breakpoint: 480,
-
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-
+        { breakpoint: 1199, settings: { slidesToShow: 4, slidesToScroll: 2 } },
+        { breakpoint: 991,  settings: { slidesToShow: 3, slidesToScroll: 2 } },
+        { breakpoint: 767,  settings: { slidesToShow: 2, slidesToScroll: 1 } },
+        { breakpoint: 480,  settings: { slidesToShow: 1, slidesToScroll: 1 } }
       ]
-
     });
-
 
   });
 
